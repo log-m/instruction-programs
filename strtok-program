@@ -1,0 +1,28 @@
+#include <string.h>
+#include <stdio.h>
+#include <iostream>
+//#include "LinkedList.cpp"
+//#include "Node.cpp"
+using namespace std;
+//template <class T>
+int main()
+{
+   /* LinkedList<string> list;
+    list.addLast("sdf");
+    list.addLast("f");
+    Node<string> q = list.removeFirst();
+    cout << q.getVal();*/
+    char str[] = "(4,2) (3,4)";
+    char * ptr;
+    int arr[4];
+    int count = 0;
+    ptr = strtok(str, " (,)");
+    while(ptr != NULL)
+    {
+        sscanf(ptr, "%d", &arr[count]);
+        ptr = strtok(NULL, " (,)");
+        count++;
+    }
+    cout << arr[0] << arr[1] << arr[2] << arr[3];
+    return 0;
+}
