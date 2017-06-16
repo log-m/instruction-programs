@@ -1,6 +1,8 @@
+#include <iostream>
+#include "LinkedList.h"
+#include "Node.h"
 #include <string.h>
 #include <stdio.h>
-#include <iostream>
 //#include "LinkedList.cpp"
 //#include "Node.cpp"
 using namespace std;
@@ -12,16 +14,19 @@ int main()
     list.addLast("f");
     Node<string> q = list.removeFirst();
     cout << q.getVal();*/
-    char str[] = "(4,2) (3,4)";
-    char * ptr;
+    string str;
+    getline(cin, str);
+    char * ptr = new char[str.size()];
+    copy(str.begin(), str.end(), ptr);
     int arr[4];
     int count = 0;
-    ptr = strtok(str, " (,)");
-    while(ptr != NULL)
+    ptr = strtok(ptr, " (,)");
+    while(count < sizeof(arr)/sizeof(int))
     {
-        sscanf(ptr, "%d", &arr[count]);
+        if(sscanf(ptr, "%d", &arr[count]))
+            count++;
         ptr = strtok(NULL, " (,)");
-        count++;
+
     }
     cout << arr[0] << arr[1] << arr[2] << arr[3];
     return 0;
